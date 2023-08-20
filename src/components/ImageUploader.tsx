@@ -3,7 +3,7 @@ import {Modal, Upload, UploadFile, UploadProps} from "antd";
 import {useCallback, useState} from "react";
 import Toast, {ToastData} from "./Toast";
 import {RcFile} from "antd/es/upload";
-import {Box, Typography} from "@mui/material";
+import {Box, Button, Grid, Typography} from "@mui/material";
 import FileUploadRoundedIcon from '@mui/icons-material/FileUploadRounded';
 import "./ImageUploader.css";
 
@@ -18,6 +18,7 @@ const getBase64 = (file: RcFile): Promise<string> =>
 
 const ImageUploader = () => {
     const [fileList, setFileList] = useState<UploadFile[]>([]);
+    const [base64String, setBase64String] = useState<string>("");
     const [previewOpen, setPreviewOpen] = useState<boolean>(false);
     const [previewImage, setPreviewImage] = useState<string>("");
     const [previewTitle, setPreviewTitle] = useState<string>("");
@@ -64,68 +65,94 @@ const ImageUploader = () => {
 
     return (
         <>
-            <Box
-                className={"outer-box"}
-                sx={{
-                    width: "200px",
-                    height: "200px",
-                    border: "1px solid darkgray",
-                    borderRadius: "8px",
-                }}
-                position={"relative"}
+            <Grid
+                container
+                columnSpacing={6}
+                rowSpacing={3}
+                pt={2}
             >
-                <Box
-                    position={"absolute"}
-                    zIndex={-1}
-                    sx={{
-                        backgroundColor: "gray"
-                    }}
+                <Grid item xs={12} display={"flex"} justifyContent={"center"}>
+                    <Typography variant={"h5"}>Image Uploader</Typography>
+                </Grid>
+                <Grid
+                    item
+                    xs={12}
+                    display={"flex"}
+                    justifyContent={"center"}
                 >
                     <Box
-                        // Inner content
-                        id={"image-box"}
+                        className={"outer-box"}
                         sx={{
                             width: "200px",
                             height: "200px",
-                            display: "flex",
-                            flexWrap: "wrap",
-                            justifyContent: "center",
-                            alignItems: "center",
-                            alignContent: "space-evenly",
+                            border: "1px solid darkgray",
+                            borderRadius: "8px",
                         }}
+                        position={"relative"}
                     >
-                        <>
-                            <FileUploadRoundedIcon/>
+                        <Box
+                            position={"absolute"}
+                            zIndex={-1}
+                        >
                             <Box
-                                display={"flex"}
-                                flexWrap={"wrap"}
-                                justifyContent={"center"}
+                                // Inner content
+                                id={"image-box"}
+                                sx={{
+                                    width: "200px",
+                                    height: "200px",
+                                    display: "flex",
+                                    flexWrap: "wrap",
+                                    justifyContent: "center",
+                                    alignItems: "center",
+                                    alignContent: "space-evenly",
+                                }}
                             >
-                                <Typography>Drag and drop here or</Typography>
-                                <Typography>Upload Profile Image</Typography>
+                                <>
+                                    <FileUploadRoundedIcon
+                                        sx={{
+                                            height: "120px",
+                                            width: "120px",
+                                            color: "skyblue"
+                                        }}
+                                    />
+                                    <Box
+                                        display={"flex"}
+                                        flexWrap={"wrap"}
+                                        justifyContent={"center"}
+                                    >
+                                        <Typography>Drag and drop here or</Typography>
+                                        <Typography>Upload Profile Image</Typography>
+                                    </Box>
+                                </>
                             </Box>
-                        </>
+                        </Box>
+                        <ImgCrop
+                            showGrid
+                            showReset
+                            zoomSlider
+                        >
+                            <Upload
+                                action=""
+                                listType="picture-card"
+                                accept=".jpeg,.png,.jpg"
+                                fileList={fileList}
+                                multiple={false}
+                                beforeUpload={beforeImageUpload}
+                                onChange={onImageContainerChange}
+                                onPreview={onImagePreview}
+                            >
+                                {(fileList.length < 1) && " "}
+                            </Upload>
+                        </ImgCrop>
                     </Box>
-                </Box>
-                <ImgCrop
-                    showGrid
-                    showReset
-                    zoomSlider
-                >
-                    <Upload
-                        action=""
-                        listType="picture-card"
-                        accept=".jpeg,.png,.jpg"
-                        fileList={fileList}
-                        multiple={false}
-                        beforeUpload={beforeImageUpload}
-                        onChange={onImageContainerChange}
-                        onPreview={onImagePreview}
-                    >
-                        {(fileList.length < 1) && " "}
-                    </Upload>
-                </ImgCrop>
-            </Box>
+                </Grid>
+                <Grid item xs={12} ml={1} mr={1}>
+                    <Button fullWidth variant={"contained"}>Get Base64 String</Button>
+                </Grid>
+                <Grid item xs={12}>
+                    <Box>Image URL</Box>
+                </Grid>
+            </Grid>
             <Modal
                 open={previewOpen}
                 title={previewTitle}
