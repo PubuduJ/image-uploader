@@ -66,7 +66,3 @@ You don't have to ever use `eject`. The curated feature set is suitable for smal
 
 ## Version
 v1.0.0
-
-## License
-Copyright &copy; 2023 [Pubudu Janith](https://www.linkedin.com/in/pubudujanith/). All Rights Reserved.<br>
-This project is licensed under the [MIT license](LICENSE.txt).
