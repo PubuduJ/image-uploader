@@ -8,9 +8,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 #### Images of the user Interfaces
 
-<img src="assets/image-1.png" alt="main-form" width="250px"/><br>
+<img src="assets/image-1.png" alt="main-form" width="250px"/>
 <img src="assets/image-2.png" alt="main-form" width="250px"/><br>
-<img src="assets/image-3.png" alt="main-form" width="250px"/><br>
+<img src="assets/image-3.png" alt="main-form" width="250px"/>
 <img src="assets/image-4.png" alt="main-form" width="250px"/>
 
 ## Used Technologies
