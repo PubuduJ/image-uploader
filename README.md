@@ -2,9 +2,8 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-[//]: # (This is a simple task list application that can display both ongoing and completed tasks.)
-
-[//]: # (The goal of this project was to gain a better understanding of the **React component-based architecture, React hooks, and React props.**)
+This is an example image uploader that supports drag-and-drop and image cropping. 
+The size of the image uploader container can be modified based on the needs of the user, and the uploaded image can be downloaded in base64 text format.
 
 #### Images of the user Interfaces
 
