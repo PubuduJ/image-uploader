@@ -6,9 +6,15 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 [//]: # (The goal of this project was to gain a better understanding of the **React component-based architecture, React hooks, and React props.**)
 
-#### User Interface
+#### Images of the user Interfaces
 
-[//]: # (<img src="assets/user-interface.png" alt="main-form" width="800px"/>)
+<img src="assets/image-1.png" alt="main-form" width="250px"/>
+<br>
+<img src="assets/image-2.png" alt="main-form" width="250px"/>
+<br>
+<img src="assets/image-3.png" alt="main-form" width="250px"/>
+<br>
+<img src="assets/image-4.png" alt="main-form" width="250px"/>
 
 ## Used Technologies
 
