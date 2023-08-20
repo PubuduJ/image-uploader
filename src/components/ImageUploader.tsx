@@ -1,6 +1,6 @@
 import ImgCrop from "antd-img-crop";
 import {Modal, Upload, UploadFile, UploadProps} from "antd";
-import {useCallback, useState} from "react";
+import {useCallback, useEffect, useState} from "react";
 import Toast, {ToastData} from "./Toast";
 import {RcFile} from "antd/es/upload";
 import {Box, Button, Grid, Typography} from "@mui/material";
@@ -44,7 +44,7 @@ const ImageUploader = () => {
             return Upload.LIST_IGNORE;
         }
         const base64String = await getBase64(file as RcFile);
-        console.log(base64String);
+        setBase64String(base64String);
         return true;
     };
 
@@ -59,9 +59,32 @@ const ImageUploader = () => {
         setPreviewTitle(file.name || file.url!.substring(file.url!.lastIndexOf('/') + 1));
     };
 
+    const handleDownload = () => {
+        if (base64String === "") {
+            setToastConfig({
+                open: true,
+                message: "Please upload an image to get the base64 string!",
+                type: "error"
+            });
+        }
+        else {
+            const element = document.createElement("a");
+            const file = new Blob([base64String], {type: "text/plain"});
+            element.href = URL.createObjectURL(file);
+            element.download = 'hello.txt';
+            document.body.appendChild(element);
+            element.click();
+            document.body.removeChild(element);
+        }
+    }
+
     const handleToastOnclose = useCallback((state: boolean) => {
         setToastConfig((prevState: ToastData) => {return {...prevState, "open" : state}})
     }, [])
+
+    useEffect(() => {
+        if (fileList.length === 0) setBase64String("");
+    }, [fileList])
 
     return (
         <>
@@ -69,7 +92,7 @@ const ImageUploader = () => {
                 container
                 columnSpacing={6}
                 rowSpacing={3}
-                pt={2}
+                pt={3}
             >
                 <Grid item xs={12} display={"flex"} justifyContent={"center"}>
                     <Typography variant={"h5"}>Image Uploader</Typography>
@@ -95,8 +118,6 @@ const ImageUploader = () => {
                             zIndex={-1}
                         >
                             <Box
-                                // Inner content
-                                id={"image-box"}
                                 sx={{
                                     width: "200px",
                                     height: "200px",
@@ -105,6 +126,8 @@ const ImageUploader = () => {
                                     justifyContent: "center",
                                     alignItems: "center",
                                     alignContent: "space-evenly",
+                                    backgroundColor: "white",
+                                    borderRadius: "8px",
                                 }}
                             >
                                 <>
@@ -147,10 +170,13 @@ const ImageUploader = () => {
                     </Box>
                 </Grid>
                 <Grid item xs={12} ml={1} mr={1}>
-                    <Button fullWidth variant={"contained"}>Get Base64 String</Button>
-                </Grid>
-                <Grid item xs={12}>
-                    <Box>Image URL</Box>
+                    <Button
+                        fullWidth
+                        variant={"contained"}
+                        onClick={handleDownload}
+                    >
+                        Download Base64 String
+                    </Button>
                 </Grid>
             </Grid>
             <Modal
