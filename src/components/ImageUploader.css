@@ -1,0 +1,39 @@
+.outer-box:hover {
+    border-color: black;
+}
+
+.ant-upload-list-item-container {
+    width: 200px !important;
+    height: 200px !important;
+}
+
+.ant-upload-select {
+    width: 200px !important;
+    height: 200px !important;
+    background-color: transparent !important;
+    border: none !important;
+}
+
+.ant-upload-list-item {
+    border: none !important;
+}
+
+.ant-upload-list-item-uploading {
+    background-color: white !important;
+}
+
+.ant-upload-list-item-name {
+    display: none !important;
+}
+
+.anticon-picture {
+    display: none !important;
+}
+
+.ant-upload-list-item-undefined {
+    display: none !important;
+}
+
+.ant-tooltip {
+    display: none !important;
+}
