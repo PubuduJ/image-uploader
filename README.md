@@ -2,7 +2,7 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-This is an example image uploader that supports drag-and-drop and image cropping. 
+This is a sample image uploader that supports drag-and-drop and image cropping functionalities. 
 The size of the image uploader container can be modified based on the needs of the user, and the uploaded image can be downloaded in base64 text format.
 
 #### Images of the user Interfaces
