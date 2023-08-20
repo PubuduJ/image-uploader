@@ -100,7 +100,7 @@ const ImageUploader = () => {
                 pt={3}
             >
                 <Grid item xs={12} display={"flex"} justifyContent={"center"}>
-                    <Typography variant={"h5"}>Image Uploader</Typography>
+                    <Typography color={"white"} fontWeight={"bold"} variant={"h5"}>React Image Uploader</Typography>
                 </Grid>
                 <Grid
                     item
@@ -148,8 +148,8 @@ const ImageUploader = () => {
                                         flexWrap={"wrap"}
                                         justifyContent={"center"}
                                     >
-                                        <Typography>Drag and drop here or</Typography>
-                                        <Typography>Upload Profile Image</Typography>
+                                        <Typography fontStyle={"italic"}>Drag and drop here or</Typography>
+                                        <Typography fontStyle={"italic"}>Upload Profile Image</Typography>
                                     </Box>
                                 </>
                             </Box>
@@ -178,6 +178,7 @@ const ImageUploader = () => {
                     <Button
                         fullWidth
                         variant={"contained"}
+                        sx={{fontWeight: "bold"}}
                         onClick={handleDownload}
                     >
                         Download Base64 String
