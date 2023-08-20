@@ -58,7 +58,7 @@ const ImageUploader = () => {
         setPreviewTitle(file.name || file.url!.substring(file.url!.lastIndexOf('/') + 1));
     };
 
-    const handleImageToastOnclose = useCallback((state: boolean) => {
+    const handleToastOnclose = useCallback((state: boolean) => {
         setToastConfig((prevState: ToastData) => {return {...prevState, "open" : state}})
     }, [])
 
@@ -137,7 +137,7 @@ const ImageUploader = () => {
             <Toast
                 data={toastConfig}
                 action={{
-                    onClose: handleImageToastOnclose
+                    onClose: handleToastOnclose
                 }}
             />
         </>
