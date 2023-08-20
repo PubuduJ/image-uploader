@@ -37,7 +37,7 @@ const Toast = ({data, action}: Props) => {
         <>
             <Snackbar
                 open={data.open}
-                autoHideDuration={5000}
+                autoHideDuration={3000}
                 anchorOrigin={{vertical: "bottom", horizontal: "right"}}
                 onClose={handleClose}>
                 <Alert onClose={handleClose} severity={data.type} sx={{width: '100%'}}>

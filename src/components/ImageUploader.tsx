@@ -63,7 +63,7 @@ const ImageUploader = () => {
         if (base64String === "") {
             setToastConfig({
                 open: true,
-                message: "Please upload an image to get the base64 string!",
+                message: "Please upload an image first!",
                 type: "error"
             });
         }
@@ -75,6 +75,11 @@ const ImageUploader = () => {
             document.body.appendChild(element);
             element.click();
             document.body.removeChild(element);
+            setToastConfig({
+                open: true,
+                message: "Download successfully!",
+                type: "success"
+            });
         }
     }
 
